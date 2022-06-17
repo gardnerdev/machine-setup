@@ -10,9 +10,8 @@
     "workbench.editorAssociations": {
         "*.pdf": "analyticsignal.preview-pdf"
     },
-    "editor.fontFamily": "monospace",
     "terminal.integrated.fontSize": 13,
-    "terminal.integrated.fontFamily": "monospace, PowerlineSymbols",
+    "terminal.integrated.fontFamily": "Meslo LG M DZ for Powerline",
     "python.formatting.provider": "black",
     "editor.formatOnSave": true,
     "python.formatting.blackArgs": [

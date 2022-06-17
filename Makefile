@@ -1,6 +1,6 @@
 .ONESHELL:
-all: prepare zsh brew kubectl krew rust node
-.PHONY: zsh brew ubectl krew rust node
+all: prepare zsh brew kind kubectl krew rust node
+.PHONY: zsh brew ubectl kind krew rust node kind-cluster docker
 
 TEMPLATES_DIR = .
 
@@ -24,6 +24,11 @@ brew:
 	./setup.sh
 	cd ./packages
 	./setup.sh
+
+docker:
+	cd ./docker
+	./setup.sh
+
 krew:
 	cd ./krew
 	./setup.sh
@@ -32,6 +37,15 @@ kubectl:
 	cd ./kubectl
 	./setup.sh
 
+kind:
+	cd ./kind
+	./setup.sh
+
+kind-cluster:
+	cd ./kind
+	chmod -R a+x cluster
+	cd cluster
+	./setup.sh
 node:
 	cd ./node
 	./setup.sh

@@ -9,6 +9,10 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/p
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
 ln -sf "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+git clone https://github.com/supercrabtree/k.git $HOME/k
+git clone "https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv.git" "$ZSH_CUSTOM/plugins/autoswitch_virtualenv"
+source $HOME/k/k.sh
+print "source $HOME/k/k.sh" >> $HOME/.zshrc
 echo "Making zsh the default shell"
 'if [ "$SHELL" != "/usr/bin/zsh" ] then export SHELL="/usr/bin/zsh" exec /usr/bin/zsh fi' >> ~/.bashrc
 source ~/.bashrc

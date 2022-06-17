@@ -16,12 +16,7 @@ cmd=(
     fzf
 )
 
-
-
-
-
 # execute it
 "${cmd[@]}"
-source ~/.zshrc
 
 set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf >> .vimrc

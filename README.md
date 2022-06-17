@@ -4,12 +4,12 @@ Scripted setup of a working Linux environment
 
 
 
-|   packages/apps        |                                            |  
+|   packages/apps        |                                            |
 |------------------------|--------------------------------------------|
 |   automake             |https://github.com/autotools-mirror/automake|
 |   build-essential      |
 |   cmake                |https://github.com/Kitware/CMake            |
-|   gnome-tweaks         |  
+|   gnome-tweaks         |
 |   libguestfs-tools     |accessing and modifying virtual machine disk imagesw
 |   localepurge          |http://manpages.ubuntu.com/manpages/bionic/man8/localepurge.8.html                                            |
 |   firefox              |                                            |
@@ -53,3 +53,11 @@ Scripted setup of a working Linux environment
 |-----------------------|-----------------------------------------------|
 |   k (new l)           |https://github.com/supercrabtree/k             |
 | python autoswitch     |https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv|
+
+
+
+# Installation
+```
+cd machine-setup
+chmod a+x -R
+```

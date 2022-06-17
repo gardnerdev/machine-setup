@@ -1,6 +1,6 @@
 .ONESHELL:
-all: prepare zsh kubectl krew rust brew
-.PHONY: zsh brew ubectl krew rust
+all: prepare zsh brew kubectl krew rust node
+.PHONY: zsh brew ubectl krew rust node
 
 TEMPLATES_DIR = .
 
@@ -32,10 +32,18 @@ kubectl:
 	cd ./kubectl
 	./setup.sh
 
+node:
+	cd ./node
+	./setup.sh
+
 rust:
 	cd ./rust
 	./setup.sh
 
 zsh:
 	cd ./zsh
+	./setup.sh
+
+vscode:
+	cd ./vscode
 	./setup.sh

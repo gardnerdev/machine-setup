@@ -1,31 +1,72 @@
-#!/bin/bash
+#!/bin/sh
+set -e
+# Install node and npm via nvm - https://github.com/creationix/nvm
 
-echo "################################################################"
-echo "Installing nvm ..."
+# Run this script like - bash script-name.sh
 
-curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+# Define versions
+INSTALL_NODE_VER=10
+INSTALL_NVM_VER=0.33.11
+INSTALL_YARN_VER=1.7.0
 
-# source ~/.bashrc
+sudo chown -R $USER /usr/local/lib/node_modules
+sudo chown -R $USER ../lib/node_modules
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# You can pass argument to this script --version 8
+if [ "$1" = '--version' ]; then
+	echo "==> Using specified node version - $2"
+	INSTALL_NODE_VER=$2
+fi
 
-echo "################################################################"
-echo "Installing node ..."
-nvm install 11.14.0 #stable
-nvm current
+echo "==> Ensuring .bashrc exists and is writable"
+touch ~/.bashrc
 
-# echo "################################################################"
-# echo "Creating symlinks for auxiliary software..."
-# sudo ln -s -f /home/filip/.nvm/versions/node/$(node --version)/bin/node /usr/bin/node
-# sudo ln -s -f /home/filip/.nvm/versions/node/$(node --version)/bin/npm /usr/bin/npm
+echo "==> Installing node version manager (NVM). Version $INSTALL_NVM_VER"
+# Removed if already installed
+rm -rf ~/.nvm
+# Unset exported variable
+export NVM_DIR=
 
-echo "################################################################"
-echo "Installing yarn ..."
+# Install nvm
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v$INSTALL_NVM_VER/install.sh | zsh
+# Make nvm command available to terminal
+source ~/.nvm/nvm.sh
 
-npm i -g yarn
+echo "==> Installing node js version $INSTALL_NODE_VER"
+nvm install $INSTALL_NODE_VER
 
-# curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-# echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-# sudo apt-get update && sudo apt-get install --no-install-recommends yarn
+echo "==> Make this version system default"
+nvm alias default $INSTALL_NODE_VER
+nvm use default
+
+#echo -e "==> Update npm to latest version, if this stuck then terminate (CTRL+C) the execution"
+#npm install -g npm
+
+echo "==> Installing Yarn package manager"
+rm -rf ~/.yarn
+curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version $INSTALL_YARN_VER
+
+echo "==> Adding Yarn to environment path"
+# Yarn configurations
+export PATH="$HOME/.yarn/bin:$PATH"
+yarn config set prefix ~/.yarn -g
+
+echo "==> Checking for versions"
+nvm --version
+node --version
+npm --version
+yarn --version
+
+echo "==> Print binary paths"
+which npm
+which node
+which yarn
+
+echo "==> List installed node versions"
+nvm ls
+
+nvm cache clear
+echo "==> Now you're all setup and ready for development. If changes are yet totake effect, I suggest you restart your computer"
+
+npm cache clean
+# Tested on Ubuntu, MacOS

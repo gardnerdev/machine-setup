@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# npm packages 
+# npm packages
 cmd=(
     npm install -g
     commitizen

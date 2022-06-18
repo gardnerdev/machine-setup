@@ -3,7 +3,7 @@ set -o errexit
 
 # desired cluster name; default is "kind"
 KIND_CLUSTER_NAME="kind-cluster"
-HOST_PATH="/home/users/chojnar1/Desktop/desktop/Projects/personal/machine-setup/kind/cluster/storage"
+HOST_PATH="$PWD/storage"
 
 # create registry container unless it already exists
 reg_name='kind-registry'

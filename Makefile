@@ -1,13 +1,13 @@
 .ONESHELL:
 all: prepare zsh brew kind kubectl krew rust node kubeflow-pipelines
-.PHONY: zsh brew ubectl kind krew rust node kind-create docker kind-delete kind-ingress kind-loadbalancer kubeflow-pipelines
+.PHONY: prepare zsh brew ubectl kind krew rust node kind-create docker kind-delete kind-ingress kind-loadbalancer kubeflow-pipelines
 
 TEMPLATES_DIR = .
 
 
 prepare:
-	chmod a+x prepare-installation.sh
-	./prepare-installation.sh
+	chmod a+x prepare.sh
+	./prepare.sh
 
 
 # install-all:

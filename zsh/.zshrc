@@ -133,7 +133,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias cleardocker='docker rm $(docker ps -a -q)'
+alias dclean='docker rm $(docker ps -a -q)'
+alias ddandling='docker rmi $(docker images --filter "dangling=true" -q --no-trunc)'
 alias fzfp="fzf --preview \"cat {}\""
 alias gh="cat ~/.oh-my-zsh/plugins/git/README.md | grep '^| g' | fzf"
 

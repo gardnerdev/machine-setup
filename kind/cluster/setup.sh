@@ -3,7 +3,7 @@ set -o errexit
 
 # desired cluster name; default is "kind"
 KIND_CLUSTER_NAME="kind-cluster"
-HOST_PATH="$PWD/storage"
+HOST_PATH="/home/users/chojnar1/Desktop/desktop/Projects/personal/machine-setup/kind/cluster/storage"
 
 # create registry container unless it already exists
 reg_name='kind-registry'
@@ -34,6 +34,7 @@ nodes:
   - containerPort: 443
     hostPort: 443
     protocol: TCP
+- role: worker
   extraMounts:
   - hostPath: $HOST_PATH
     containerPath: /home
@@ -45,7 +46,16 @@ nodes:
     # default None
     propagation: HostToContainer
 - role: worker
-- role: worker
+  extraMounts:
+  - hostPath: $HOST_PATH
+    containerPath: /home
+    # optional: if set, the mount needs SELinux relabeling.
+    # default false
+    selinuxRelabel: false
+    # optional: set propagation mode (None, HostToContainer or Bidirectional)
+    # see https://kubernetes.io/docs/concepts/storage/volumes/#mount-propagation
+    # default None
+    propagation: HostToContainer
 containerdConfigPatches:
 - |-
   [plugins."io.containerd.grpc.v1.cri".registry.mirrors."localhost:${reg_port}"]

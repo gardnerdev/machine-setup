@@ -8,7 +8,8 @@
     ./"${KREW}" install krew
 )
 export PATH="${PATH}:${HOME}/.krew/bin" >> ~/.bashrc
-source ~/.bashrc
+export PATH="${PATH}:${HOME}/.krew/bin" >> ~/.zshrc
+
 kubectl krew install ns & kubectl krew install ctx
 
 echo "####### Verification #######"

@@ -1,6 +1,6 @@
 .ONESHELL:
 all: prepare zsh brew kind kubectl krew rust node kubeflow-pipelines
-.PHONY: zsh brew ubectl kind krew rust node kind-cluster docker delete-kind-cluster kind-ingress kind-loadbalancer kubeflow-pipelines
+.PHONY: zsh brew ubectl kind krew rust node kind-create docker kind-delete kind-ingress kind-loadbalancer kubeflow-pipelines
 
 TEMPLATES_DIR = .
 
@@ -45,13 +45,15 @@ kind:
 	cd ./kind
 	./setup.sh
 
-kind-cluster:
+kind-create:
 	cd ./kind
 	chmod -R a+x cluster
 	cd cluster
 	./setup.sh
+	echo "testing setup"
+	kubectl apply -f pod.yaml
 
-delete-kind-cluster:
+kind-delete:
 	cd ./kind/cluster
 	./delete.sh
 

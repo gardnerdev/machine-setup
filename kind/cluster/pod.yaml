@@ -1,27 +1,23 @@
 kind: Pod
 apiVersion: v1
 metadata:
-  name: foo
-  labels:
-    app: foo
+  name: alpine
+  namespace: default
 spec:
   containers:
-  - name: foo
-    image: hashicorp/http-echo:0.2.3
-    args:
-    - "-text=foo"
-    ports:
-    - containerPort: 5678
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: foo
-spec:
-  type: NodePort
-  ports:
-  - name: http
-    nodePort: 30950
-    port: 5678
-  selector:
-    app: foo
+  - image: alpine:3.2
+    command:
+      - /bin/sh
+      - "-c"
+      - "sleep 60m"
+    imagePullPolicy: IfNotPresent
+    name: alpine
+    volumeMounts:
+    - mountPath: "/home"
+      name: test-volume
+  volumes:
+    - name: test-volume
+      hostPath:
+      # directory location on host (kind nodes mounts /home <-> $HOME_PATH (local computer))
+          path: /home
+          type: Directory

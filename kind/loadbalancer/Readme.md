@@ -1,0 +1,1 @@
+Refer to https://kind.sigs.k8s.io/docs/user/loadbalancer/#setup-address-pool-used-by-loadbalancers

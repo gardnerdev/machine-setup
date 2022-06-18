@@ -1,6 +1,6 @@
 .ONESHELL:
-all: prepare zsh brew kind kubectl krew rust node
-.PHONY: zsh brew ubectl kind krew rust node kind-cluster docker
+all: prepare zsh brew kind kubectl krew rust node kubeflow
+.PHONY: zsh brew ubectl kind krew rust node kind-cluster docker delete-kind-cluster kind-ingress kind-loadbalancer kubeflow
 
 TEMPLATES_DIR = .
 
@@ -37,6 +37,10 @@ kubectl:
 	cd ./kubectl
 	./setup.sh
 
+kubeflow:
+	cd ./kubectl
+	./setup.sh
+
 kind:
 	cd ./kind
 	./setup.sh
@@ -46,6 +50,23 @@ kind-cluster:
 	chmod -R a+x cluster
 	cd cluster
 	./setup.sh
+
+delete-kind-cluster:
+	cd ./kind/cluster
+	./delete.sh
+
+kind-ingress:
+	cd ./kind/ingress
+	./setup.sh
+	kubectl apply -f ingress.yaml
+
+kind-loadbalancer:
+	cd ./kind/loadbalancer
+	./metalb.sh
+	kubectl apply -f configmap.yaml
+	kubectl apply -f loadbalancer.yaml
+	./watch.sh
+
 node:
 	cd ./node
 	./setup.sh

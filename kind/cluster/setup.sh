@@ -1,10 +1,6 @@
 #!/bin/sh
 set -o errexit
 
-# desired cluster name; default is "kind"
-KIND_CLUSTER_NAME="kind-cluster"
-HOST_PATH="$PWD/storage"
-
 # create registry container unless it already exists
 reg_name='kind-registry'
 reg_port='5001'
@@ -15,9 +11,13 @@ if [ "$(docker inspect -f '{{.State.Running}}' "${reg_name}" 2>/dev/null || true
 fi
 
 # create a cluster with the local registry enabled in containerd
-cat <<EOF | kind create cluster --name "${KIND_CLUSTER_NAME}" --config=-
+cat <<EOF | kind create cluster --config=-
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
+containerdConfigPatches:
+- |-
+  [plugins."io.containerd.grpc.v1.cri".registry.mirrors."localhost:${reg_port}"]
+    endpoint = ["http://${reg_name}:5000"]
 nodes:
 - role: control-plane
   kubeadmConfigPatches:
@@ -56,17 +56,12 @@ nodes:
     # see https://kubernetes.io/docs/concepts/storage/volumes/#mount-propagation
     # default None
     propagation: HostToContainer
-containerdConfigPatches:
-- |-
-  [plugins."io.containerd.grpc.v1.cri".registry.mirrors."localhost:${reg_port}"]
-    endpoint = ["http://${reg_ip}:${reg_port}"]
 EOF
 
 # connect the registry to the cluster network if not already connected
 if [ "$(docker inspect -f='{{json .NetworkSettings.Networks.kind}}' "${reg_name}")" = 'null' ]; then
   docker network connect "kind" "${reg_name}"
 fi
-
 
 # Document the local registry
 # https://github.com/kubernetes/enhancements/tree/master/keps/sig-cluster-lifecycle/generic/1755-communicating-a-local-registry
@@ -81,3 +76,4 @@ data:
     host: "localhost:${reg_port}"
     help: "https://kind.sigs.k8s.io/docs/user/local-registry/"
 EOF
+

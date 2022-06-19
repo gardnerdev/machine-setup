@@ -50,8 +50,11 @@ kind-create:
 	chmod -R a+x cluster
 	cd cluster
 	./setup.sh
+	echo "testing local registry"
+	./test-local-registry.sh
 	echo "testing setup"
 	kubectl apply -f pod.yaml
+
 
 kind-delete:
 	cd ./kind/cluster

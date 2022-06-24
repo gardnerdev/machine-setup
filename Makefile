@@ -1,6 +1,6 @@
 .ONESHELL:
-all: prepare zsh brew kind kubectl krew rust node kubeflow-pipelines
-.PHONY: prepare zsh brew ubectl kind krew rust node kind-create docker kind-delete kind-ingress kind-loadbalancer kubeflow-pipelines
+all: prepare zsh brew kind kubectl krew rust node-npm kubeflow-pipelines
+.PHONY: prepare zsh brew ubectl kind krew rust node-npm kind-create docker kind-delete kind-ingress kind-loadbalancer kubeflow-pipelines
 
 TEMPLATES_DIR = .
 
@@ -72,9 +72,9 @@ kind-loadbalancer:
 	kubectl apply -f loadbalancer.yaml
 	./watch.sh
 
-node:
+node-npm:
 	cd ./node
-	./setup.sh
+	sudo ./setup.sh
 
 rust:
 	cd ./rust

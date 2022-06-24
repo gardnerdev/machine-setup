@@ -5,6 +5,7 @@
 # brew packages
 cmd=(
     brew install
+    gcc
     bat
     ctop
     derailed/k9s/k9s

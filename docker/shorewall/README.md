@@ -35,4 +35,5 @@ Check:
 ```
 cat /etc/shorewall/shorewall.conf | grep DOCKER
 DOCKER=Yes
+docker run --name mynginx1 -p 80:80 nginx
 ```

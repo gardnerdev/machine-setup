@@ -82,6 +82,7 @@ rust:
 
 zsh:
 	cd ./zsh
+	./install.sh
 	./setup.sh
 
 vscode:

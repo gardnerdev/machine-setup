@@ -1,5 +1,6 @@
 autoload -Uz compinit
 compinit
+ZSH_DISABLE_COMPFIX=true
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -140,7 +141,7 @@ alias gh="cat ~/.oh-my-zsh/plugins/git/README.md | grep '^| g' | fzf"
 
 #source /home/linuxbrew/.linuxbrew/opt/powerlevel10k/powerlevel10k.zsh-theme
 
-
+export PATH=/usr/local/bin:$PATH
 
 
 ## Colorize the ls output ##

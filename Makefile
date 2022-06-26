@@ -82,9 +82,11 @@ rust:
 
 zsh:
 	cd ./zsh
-	./install.sh
 	./setup.sh
-
+	./install.sh
+	./copy.sh
+	./plugins.sh
+	
 vscode:
 	cd ./vscode
 	./setup.sh

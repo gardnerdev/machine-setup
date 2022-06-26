@@ -510,7 +510,6 @@ EOF
     echo "${FMT_YELLOW}Run zsh to try it out.${FMT_RESET}"
     exit
   fi
-
   exec zsh -l
 }
 

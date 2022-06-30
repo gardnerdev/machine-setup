@@ -15,7 +15,9 @@ cmd=(
     spaceship
     spotify-tui
     fzf
-)
+    dive
+    goodwithtech/r/dockle
+)   
 
 # execute it
 "${cmd[@]}"

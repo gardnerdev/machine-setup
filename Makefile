@@ -1,6 +1,6 @@
 .ONESHELL:
 all: prepare zsh brew kind kubectl krew rust node-npm kubeflow-pipelines
-.PHONY: prepare zsh brew ubectl kind krew rust node-npm kind-create docker kind-delete kind-ingress kind-loadbalancer kubeflow-pipelines
+.PHONY: prepare zsh brew ubectl kind krew rust node-npm kind-create docker kind-delete kind-ingress kind-loadbalancer kubeflow-pipelines poetry python
 
 TEMPLATES_DIR = .
 
@@ -89,4 +89,13 @@ zsh:
 	
 vscode:
 	cd ./vscode
+	./setup.sh
+
+
+poetry:
+	cd ./poetry
+	./setup.sh
+	
+python:
+	cd ./python
 	./setup.sh

@@ -250,4 +250,7 @@ alias python3=/usr/bin/python3.10
 export PATH="$PATH:/opt/mssql-tools18/bin"
 export PATH="${PATH}:${HOME}/.krew/bin"
 
+# load zgen
+source "${HOME}/.zgen/zgen.zsh"
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

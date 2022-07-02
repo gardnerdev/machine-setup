@@ -18,6 +18,7 @@ cmd=(
     dive
     goodwithtech/r/dockle
     jesseduffield/lazydocker/lazydocker
+    lazygit
 )   
 
 # execute it

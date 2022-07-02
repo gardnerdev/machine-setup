@@ -7,7 +7,8 @@ echo "####### Validating installation #######"
 echo "$(cat kubectl.sha256) kubectl" | sha256sum --check
 
 echo "####### Installation #######"
-sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
 
 echo "####### Verification #######"
 kubectl version --client

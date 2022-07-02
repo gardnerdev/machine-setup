@@ -252,5 +252,7 @@ export PATH="${PATH}:${HOME}/.krew/bin"
 export PATH="$HOME/.poetry/bin:$PATH"
 # load zgen
 source "${HOME}/.zgen/zgen.zsh"
+export BREW_HOME="/home/linuxbrew/.linuxbrew/bin"
+export PATH="$PATH:$BREW_HOME"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

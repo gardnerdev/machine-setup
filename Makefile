@@ -94,6 +94,8 @@ zsh:
 vscode:
 	cd ./vscode
 	./setup.sh
+	cd ./fonts
+	./setup.sh
 
 
 poetry:

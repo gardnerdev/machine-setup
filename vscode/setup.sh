@@ -4,4 +4,7 @@ sudo sh -c 'echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/packages.micr
 sudo apt update
 sudo apt install code
 
+mkdir ~/.local/share/fonts
+cp fonts/FiraMono/* ~/.local/share/fonts
+fc-cache -f -v
 echo "Copy by hand settings.json file"

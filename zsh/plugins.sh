@@ -15,3 +15,6 @@ git -C $FZF_DIR --depth 1 https://github.com/junegunn/fzf.git pull || git clone 
 ${FZF_DIR}/install && \
 git -C $VIRTUAL_DIR https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv.git pull || git clone $VIRTUAL_DIR && \
 git -C &ZGEN_DIR https://github.com/tarjoilija/zgen.git pull || git clone $ZGEN_DIR
+
+echo "Copying zsh setup"
+cp .zshrc ~/

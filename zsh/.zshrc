@@ -70,7 +70,7 @@ ZSH_THEME="spaceship"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting docker docker-compose git git-extras jira mvn z fzf)
+plugins=(git zsh-autosuggestions poetry zsh-syntax-highlighting docker docker-compose git git-extras jira mvn z fzf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -249,7 +249,7 @@ export PATH="$GOPATH/bin:$PATH"
 alias python3=/usr/bin/python3.10
 export PATH="$PATH:/opt/mssql-tools18/bin"
 export PATH="${PATH}:${HOME}/.krew/bin"
-
+export PATH="$HOME/.poetry/bin:$PATH"
 # load zgen
 source "${HOME}/.zgen/zgen.zsh"
 

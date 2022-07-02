@@ -17,6 +17,7 @@ cmd=(
     fzf
     dive
     goodwithtech/r/dockle
+    jesseduffield/lazydocker/lazydocker
 )   
 
 # execute it

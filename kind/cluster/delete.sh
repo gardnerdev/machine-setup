@@ -1,1 +1,1 @@
-kind delete cluster --name kind-cluster
+kind delete cluster --name kind

@@ -3,10 +3,10 @@ set -e
 # Install node and npm via nvm - https://github.com/creationix/nvm
 
 # Run this script like - bash script-name.sh
-sudo apt install nodejs npm -y
-curl -L https://npmjs.org/install.sh | sudo sh 
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-
+sudo apt update
+sudo apt install nodejs
+node -v
+sudo apt install npm
 
 # # Define versions
 # INSTALL_NODE_VER=10

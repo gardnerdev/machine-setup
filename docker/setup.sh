@@ -650,3 +650,5 @@ do_install() {
 	esac
 	exit 1
 }
+
+do_install

@@ -13,6 +13,7 @@
     "terminal.integrated.fontSize": 13,
     "terminal.integrated.fontFamily": "'FiraMono Nerd Font Mono'",
     "python.formatting.provider": "black",
+    "python.venvPath": "~/.cache/pypoetry/virtualenvs/",
     "editor.formatOnSave": true,
     "python.formatting.blackArgs": [
         "--line-length",

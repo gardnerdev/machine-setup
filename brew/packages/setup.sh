@@ -19,6 +19,7 @@ cmd=(
     goodwithtech/r/dockle
     jesseduffield/lazydocker/lazydocker
     lazygit
+    pipx
 )   
 
 # execute it

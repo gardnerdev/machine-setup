@@ -1,0 +1,1 @@
+git clone https://github.com/kubeflow/manifests.git ./manifest

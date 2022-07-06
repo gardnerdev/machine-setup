@@ -1,6 +1,6 @@
 .ONESHELL:
-all: prepare zsh oh-my-zsh zsh-plugins brew kind kubectl krew rust node-npm kubeflow-pipelines
-.PHONY: prepare zsh brew ubectl kind krew rust node-npm kind-create docker kind-delete kind-ingress kind-loadbalancer kubeflow-pipelines poetry python npm-packages vscode
+all: prepare zsh oh-my-zsh zsh-plugins brew kind kubectl krew rust node-npm kubeflow-pipelines kubeflow brave
+.PHONY: prepare zsh brew brave ubectl kind krew rust node-npm kind-create docker kind-delete kind-ingress kind-loadbalancer kubeflow-pipelines kubeflow poetry python npm-packages vscode
 
 TEMPLATES_DIR = .
 
@@ -10,14 +10,9 @@ prepare:
 	./prepare.sh
 
 
-# install-all:
-# 	for d in */ ; do
-#     echo "$d"
-#     cd ./"$d"
-#     chmod a+x setup.sh
-# 	./setup.sh
-#     cd ..
-# 	done
+brave:
+	cd ./brave
+	./setup.sh
 
 brew:
 	cd ./brew
@@ -71,6 +66,13 @@ kind-loadbalancer:
 	kubectl apply -f configmap.yaml
 	kubectl apply -f loadbalancer.yaml
 	./watch.sh
+
+kubeflow:
+	cd ./kubeflow
+	./setup.sh
+	cd ./manifest
+	git checkout v1.3.0
+	while ! kustomize build example | kubectl apply -f -; do echo "Retrying to apply resources"; sleep 10; done
 
 node-npm:
 	cd ./node

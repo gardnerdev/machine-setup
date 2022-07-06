@@ -254,5 +254,11 @@ export PATH="$HOME/.poetry/bin:$PATH"
 source "${HOME}/.zgen/zgen.zsh"
 export BREW_HOME="/home/linuxbrew/.linuxbrew/bin"
 export PATH="$PATH:$BREW_HOME"
+export PATH="/usr/local/bin/aws_completer:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# aws cli completion
+autoload bashcompinit && bashcompinit
+autoload -Uz compinit && compinit
+complete -C '/usr/local/bin/aws_completer' aws

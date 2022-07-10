@@ -17,16 +17,16 @@ dock            $FW             REJECT
 dock            all             ACCEPT
 ```
 
-2.
+<!-- 2.
 ```
-rm /etc/shorewall/zones.d/docker.zones
-rm /etc/shorewall/policy.d/docker.policy
-rm /etc/shorewall/interfaces.d/docker.interfaces
-```
+sudo rm /etc/shorewall/zones.d/docker.zones
+sudo rm /etc/shorewall/policy.d/docker.policy
+sudo rm /etc/shorewall/interfaces.d/docker.interfaces
+``` -->
 
 3.
 ```
-shorewall restart
+sudo shorewall restart
 ```
 
 4.

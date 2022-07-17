@@ -5,19 +5,19 @@ metadata:
   namespace: default
 spec:
   containers:
-  - image: alpine:3.2
-    command:
-      - /bin/sh
-      - "-c"
-      - "sleep 60m"
-    imagePullPolicy: IfNotPresent
-    name: alpine
-    volumeMounts:
-    - mountPath: "/home"
-      name: test-volume
+    - image: alpine:latest
+      command:
+        - /bin/sh
+        - "-c"
+        - "sleep 60m"
+      imagePullPolicy: IfNotPresent
+      name: alpine
+      volumeMounts:
+        - mountPath: "/home"
+          name: test-volume
   volumes:
     - name: test-volume
       hostPath:
-      # directory location on host (kind nodes mounts /home <-> $HOME_PATH (local computer))
-          path: /home
-          type: Directory
+        # directory location on host (kind nodes mounts /home <-> $HOME_PATH (local computer))
+        path: /home
+        type: Directory

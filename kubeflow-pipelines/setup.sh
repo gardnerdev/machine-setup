@@ -2,9 +2,9 @@
 export PIPELINE_VERSION=1.8.2
 kubectl apply -k "github.com/kubeflow/pipelines/manifests/kustomize/cluster-scoped-resources?ref=$PIPELINE_VERSION"
 kubectl wait --for condition=established --timeout=360s crd/applications.app.k8s.io
-kubectl apply -k "github.com/kubeflow/pipelines/manifests/kustomize/env/platform-agnostic-pns?ref=$PIPELINE_VERSION"
+kubectl apply -k "github.com/kubeflow/pipelines/manifests/kustomize/env/platform-agnostic-emissary?ref=$PIPELINE_VERSION"
 kubectl ns kubeflow
-while [ "$(kubectl get pods -l=app='ml-pipelinse-ui' -o jsonpath='{.items[*].status.containerStatuses[0].ready}')" != "true" ]; do
+while [ "$(kubectl get pods -l=app='ml-pipeline-ui' -o jsonpath='{.items[*].status.containerStatuses[0].ready}')" != "true" ]; do
     sleep 15
     echo "Waiting for ml-pipeline-ui to be ready."
 done

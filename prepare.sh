@@ -5,7 +5,8 @@ echo "################### UPDATING SYSTEM AND MAKING FILES EXECUTABLE ##########
 echo "####################################################################################"
 echo " "
 
-sudo apt-get update
+sudo apt update && sudo apt upgrade -y
+sudo apt install wireshark -y
 for d in */ ; do
     echo "$d"
     cd ./"$d"
